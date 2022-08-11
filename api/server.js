@@ -1,8 +1,10 @@
 import express from 'express';
 import multer from './utils/multer.js';
 import cloudinary from './utils/cloudinary.js';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

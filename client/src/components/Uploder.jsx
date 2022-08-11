@@ -1,7 +1,10 @@
+import { useRef } from 'react';
 import image from '../assets/image.svg';
 import Button from './Button';
 
 export default function Uploader({ handleUpload }) {
+  const buttonRef = useRef(null);
+
   const handleDrop = (e) => {
     handleUpload(e.dataTransfer.files[0]);
     e.preventDefault();
@@ -32,10 +35,8 @@ export default function Uploader({ handleUpload }) {
         <p className="text-gray-300 font-medium">Drag & drop your image here</p>
       </div>
       <p className="text-gray-300 font-medium">Or</p>
-      <label htmlFor="image" className="inline-block cursor-pointer">
-        <input type="file" id="image" hidden name="image" onChange={handleChange} />
-        <Button className="pointer-events-none">Choose a file</Button>
-      </label>
+      <input type="file" ref={buttonRef} id="image" hidden name="image" onChange={handleChange} />
+      <Button onClick={() => buttonRef.current.click()}>Choose a file</Button>
     </div>
   );
 }
