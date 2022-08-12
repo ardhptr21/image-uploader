@@ -26,10 +26,24 @@ export default function App() {
   };
 
   return (
-    <main className="flex h-screen justify-center items-center">
+    <main className="flex gap-10 h-screen justify-center flex-col items-center">
       {state == 0 && <Uploader handleUpload={handleUpload} />}
       {state == 1 && <Loader />}
       {state == 2 && <Preview image={imageResult} />}
+
+      <footer>
+        <p className="text-gray-500 font-semibold">
+          created with 💙 by{' '}
+          <a
+            href="https://github.com/ardhptr21"
+            className="underline hover:text-blue-500"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ardhptr21
+          </a>
+        </p>
+      </footer>
     </main>
   );
 }
